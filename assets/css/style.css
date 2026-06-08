@@ -1,0 +1,63 @@
+
+/* Бүх элементүүдийн үндсэн margin, padding-ийг тэглэх */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Илүү цэвэрхэн шрифт */
+}
+
+/* Дэлгэцийн голд байрлуулах */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: radial-gradient(circle, #fcfcfc, #e0e0e0); /* Зөөлөн градиент арын өнгө */
+    margin: 0;
+}
+
+/* Товчлууруудыг агуулах контейнер (Калькулятор шиг хайрцаг үүсгэв) */
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 1fr 1fr 1fr 1fr-ийг ингэж товчилж болно */
+    gap: 12px; /* Товчлуур хоорондын зайг арай уян хатан болгов */
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 20px; /* Бөөрөнхий булан */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Зөөлөн сүүдэр */
+}
+
+/* Нийтлэг товчлуурын дизайн */
+button {
+    padding: 20px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333333;
+    background-color: #f7f7f7;
+    border: 1px solid #eaeaea;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease; /* Хөдөлгөөнийг зөөлөн болгох түүх */
+    outline: none;
+}
+
+/* Том товчлуур (жишээ нь: "0" эсвэл "=") */
+.buttonbig {
+    grid-column: span 2;
+}
+
+/* Хулгана дээр нь очих үед (Hover эффект) */
+button:hover {
+    background-color: #19b31b;
+    color: white; /* Бичгийн өнгийг цагаан болговол илүү уншигдахуйц болно */
+    border-color: #169e18;
+    transform: translateY(-2px); /* Үл ялиг дээшлэх хөдөлгөөн */
+    box-shadow: 0 5px 15px rgba(25, 179, 27, 0.3); /* Ногоон туяатай сүүдэр */
+}
+
+/* Товчлуур дээр дарах үед (Active эффект) */
+button:active {
+    transform: translateY(1px); /* Дарагдаж байгаа мэт мэдрэмж */
+    box-shadow: none;
+}
