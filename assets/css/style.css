@@ -1,63 +1,112 @@
-
-/* Бүх элементүүдийн үндсэн margin, padding-ийг тэглэх */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Илүү цэвэрхэн шрифт */
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
 }
 
-/* Дэлгэцийн голд байрлуулах */
 body {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: radial-gradient(circle, #fcfcfc, #e0e0e0); /* Зөөлөн градиент арын өнгө */
-    margin: 0;
+    background-color: #e9ecef; /* Зөөлөн саарал арын дэвсгэр */
 }
 
-/* Товчлууруудыг агуулах контейнер (Калькулятор шиг хайрцаг үүсгэв) */
+/* ТООНЫ МАШИНЫ ҮНДСЭН КОНТЕЙНЕР */
+.calculator-container {
+    display: flex;
+    align-items: stretch; /* Зүүн, баруун талын өндрийг ижил түвшинд барина */
+    gap: 30px; /* Дунд хэсгийн зай */
+    background: transparent;
+}
+
+/* ДЭЛГЭЦИЙН ГАДНА ТАЛЫН ЦАГААН ХАВТАН */
+.display-wrapper {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 36px; /* Илүү зөөлөн, бөөрөнхий булан */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.03); /* Нарийн тансаг сүүдэр */
+    width: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ДЭЛГЭЦ (Дотор талын саарал хэсэг) */
+.display {
+    width: 100%;
+    height: 80px;
+    border: none;
+    outline: none;
+    background-color: #f1f3f5; 
+    border-radius: 24px;
+    padding: 10px 25px;
+    font-size: 2.8rem; /* Тоог илүү уншигдахуйц том болгов */
+    font-weight: 700;
+    text-align: right; 
+    color: #2b2e35;
+}
+
+/* ТОВЧЛУУРУУДЫН БАЙРШИЛ (4 багана) */
 .buttons {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 1fr 1fr 1fr 1fr-ийг ингэж товчилж болно */
-    gap: 12px; /* Товчлуур хоорондын зайг арай уян хатан болгов */
-    background: #ffffff;
-    padding: 25px;
-    border-radius: 20px; /* Бөөрөнхий булан */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Зөөлөн сүүдэр */
+    grid-template-columns: repeat(4, 82px); /* Харьцааг хадгалахын тулд 82px болгов */
+    gap: 16px; 
 }
 
-/* Нийтлэг товчлуурын дизайн */
+/* ЕРӨНХИЙ ТОВЧЛУУРЫН ЗАГВАР (Тоонууд) */
 button {
-    padding: 20px;
-    font-size: 1.1rem;
+    width: 82px;
+    height: 82px;
+    font-size: 1.35rem;
     font-weight: 600;
-    color: #333333;
-    background-color: #f7f7f7;
-    border: 1px solid #eaeaea;
-    border-radius: 12px;
+    color: #212529;
+    background-color: #f8f9fa; 
+    border: none;
+    border-radius: 24px; /* Зураг шиг төгс бөөрөнхий булан */
     cursor: pointer;
-    transition: all 0.2s ease; /* Хөдөлгөөнийг зөөлөн болгох түүх */
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); /* Илүү уян хатан хөдөлгөөн */
     outline: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.01);
+    user-select: none; /* Товчлуур дээр дарахад текст идэвхжиж цэнхэр болохгүй */
 }
 
-/* Том товчлуур (жишээ нь: "0" эсвэл "=") */
-.buttonbig {
-    grid-column: span 2;
-}
-
-/* Хулгана дээр нь очих үед (Hover эффект) */
+/* Хулгана очих үеийн зөөлөн хөдөлгөөн */
 button:hover {
-    background-color: #19b31b;
-    color: white; /* Бичгийн өнгийг цагаан болговол илүү уншигдахуйц болно */
-    border-color: #169e18;
-    transform: translateY(-2px); /* Үл ялиг дээшлэх хөдөлгөөн */
-    box-shadow: 0 5px 15px rgba(25, 179, 27, 0.3); /* Ногоон туяатай сүүдэр */
+    transform: translateY(-2px); 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
 }
 
-/* Товчлуур дээр дарах үед (Active эффект) */
+/* ФУНКЦЫН ТОВЧЛУУРУУД (sin, cos, +/-, C) */
+.function {
+    background-color: #e3fafc; 
+    color: #0ca678; 
+}
+.function:hover {
+    background-color: #c5f6fa;
+}
+
+/* ҮЙЛДЭЛ ХИЙХ ТЭМДЭГТҮҮД (+, -, *, /, =) */
+.operator {
+    background-color: #fff9db; 
+    color: #f59f00; 
+}
+.operator:hover {
+    background-color: #fff3bf;
+}
+
+/* ТОД НОГООН ЦЭГ ТОВЧЛУУР (.) */
+.dot-btn {
+    background-color: #12b886 !important;
+    color: #ffffff !important;
+}
+.dot-btn:hover {
+    background-color: #0ca678 !important;
+    box-shadow: 0 6px 18px rgba(18, 184, 134, 0.2);
+}
+
+/* Товчлуур дарах үеийн идэвхтэй хөдөлгөөн (Клик эффект) */
 button:active {
-    transform: translateY(1px); /* Дарагдаж байгаа мэт мэдрэмж */
-    box-shadow: none;
+    transform: scale(0.94);
 }
